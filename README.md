@@ -23,7 +23,7 @@ Sistema de gestión y ordenación de productos para Inditex que permite administ
 ### 1. Clonar el repositorio
 
 ```bash
-git clone [URL_DEL_REPOSITORIO]
+git clone https://github.com/spulits/inditex-product-sorting.git
 cd inditex-product-sorting
 ```
 
