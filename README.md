@@ -108,12 +108,14 @@ GET http://localhost:8082/api/sort/criteria
 
 #### ProductController
 
+```
 GET    /api/products           - Obtener todos los productos
 GET    /api/products/{id}      - Obtener un producto por ID
 GET    /api/products/ids       - Obtener múltiples productos por IDs
 POST   /api/products           - Crear un nuevo producto
 PUT    /api/products/{id}      - Actualizar un producto existente
 DELETE /api/products/{id}      - Eliminar un producto
+```
 
 ## 🔄 Variables de Entorno
 
