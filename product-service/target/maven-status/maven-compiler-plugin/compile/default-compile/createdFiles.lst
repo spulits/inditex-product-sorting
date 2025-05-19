@@ -1,0 +1,8 @@
+com\inditex\product\ProductServiceApplication.class
+com\inditex\product\repository\ProductRepository.class
+com\inditex\product\service\ProductService.class
+com\inditex\product\controller\ProductController.class
+com\inditex\product\util\ProductMapper.class
+com\inditex\product\dto\ProductRequest.class
+com\inditex\product\dto\ProductResponse.class
+com\inditex\product\model\Product.class

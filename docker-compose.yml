@@ -1,0 +1,98 @@
+﻿services:
+   # Base de datos para el servicio de productos
+  product-db:
+    image: postgres:15
+    container_name: product-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: productdb
+    ports:
+      - "5433:5432"  # Puerto 5433 mapeado al 5432 interno
+    volumes:
+      - product_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Base de datos para el servicio de ordenación
+  sorting-db:
+    image: postgres:15
+    container_name: sorting-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: sortingdb
+    ports:
+      - "5434:5432"  # Puerto 5434 mapeado al 5432 interno
+    volumes:
+      - sorting_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Servicio de registro Eureka
+  #discovery:
+    #image: springcloud/eureka
+    #container_name: discovery
+    #ports:
+      #- "8761:8761"
+    #environment:
+      #- SPRING_APPLICATION_NAME=discovery-service
+
+  # Servicio de productos
+  product-service:
+    build: ./product-service
+    container_name: product-service
+    ports:
+      - "8081:8081"
+    depends_on:
+      product-db:
+        condition: service_healthy
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://product-db:5432/productdb
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_FLYWAY_ENABLED=true
+      - SPRING_FLYWAY_BASELINE_ON_MIGRATE=true
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=validate
+    restart: unless-stopped
+
+  # Servicio de ordenación
+  sorting-service:
+    build: ./sorting-service
+    container_name: sorting-service
+    ports:
+      - "8082:8082"    # Puerto de la aplicación
+      - "5005:5005"    # Puerto de depuración
+    depends_on:
+      - product-service
+      - sorting-db
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+      - SERVER_PORT=8082
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://sorting-db:5432/sortingdb
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+    restart: unless-stopped
+
+volumes:
+  product_data:
+  sorting_data:
+
+  # API Gateway
+#  api-gateway:
+#    build: ./api-gateway
+#    container_name: api-gateway
+#    depends_on:
+#      - product-service
+#      - sorting-service
+#    ports:
+#      - "8080:8080"
+#    environment:
+#      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery:8761/eureka/
+#    restart: unless-stopped

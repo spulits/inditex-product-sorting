@@ -1,0 +1,3 @@
+com\inditex\apigateway\controller\FallbackController.class
+com\inditex\apigateway\ApiGatewayApplication.class
+com\inditex\apigateway\configuration\CorsConfig.class

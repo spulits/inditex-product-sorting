@@ -1,0 +1,11 @@
+com\inditex\sorting\service\criteria\impl\StockRatioCriterion.class
+com\inditex\sorting\service\criteria\SortingCriterion.class
+com\inditex\sorting\dto\SortRequestDTO.class
+com\inditex\sorting\client\ProductClient.class
+com\inditex\sorting\dto\ProductDTO.class
+com\inditex\sorting\service\SortingService.class
+com\inditex\sorting\SortingServiceApplication.class
+com\inditex\sorting\controller\SortingController.class
+com\inditex\sorting\model\Product.class
+com\inditex\sorting\dto\SortResultDTO.class
+com\inditex\sorting\service\criteria\impl\SalesCriterion.class

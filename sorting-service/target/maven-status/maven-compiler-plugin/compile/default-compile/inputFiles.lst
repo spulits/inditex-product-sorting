@@ -1,0 +1,11 @@
+C:\Code\inditex-product-sorting\sorting-service\src\main\java\com\inditex\sorting\dto\SortRequestDTO.java
+C:\Code\inditex-product-sorting\sorting-service\src\main\java\com\inditex\sorting\service\criteria\impl\StockRatioCriterion.java
+C:\Code\inditex-product-sorting\sorting-service\src\main\java\com\inditex\sorting\dto\SortResultDTO.java
+C:\Code\inditex-product-sorting\sorting-service\src\main\java\com\inditex\sorting\service\criteria\impl\SalesCriterion.java
+C:\Code\inditex-product-sorting\sorting-service\src\main\java\com\inditex\sorting\controller\SortingController.java
+C:\Code\inditex-product-sorting\sorting-service\src\main\java\com\inditex\sorting\model\Product.java
+C:\Code\inditex-product-sorting\sorting-service\src\main\java\com\inditex\sorting\SortingServiceApplication.java
+C:\Code\inditex-product-sorting\sorting-service\src\main\java\com\inditex\sorting\client\ProductClient.java
+C:\Code\inditex-product-sorting\sorting-service\src\main\java\com\inditex\sorting\service\criteria\SortingCriterion.java
+C:\Code\inditex-product-sorting\sorting-service\src\main\java\com\inditex\sorting\dto\ProductDTO.java
+C:\Code\inditex-product-sorting\sorting-service\src\main\java\com\inditex\sorting\service\SortingService.java
